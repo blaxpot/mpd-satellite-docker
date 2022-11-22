@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+
+  mpd:
+    image: blaxpot/mpd
+    ports:
+      - "6600:6600"
+      - "8800:8800"
+    volumes:
+      - .data/music:/music
+      - ./data/playlists:/var/lib/mpd/playlists
+    restart: unless-stopped
