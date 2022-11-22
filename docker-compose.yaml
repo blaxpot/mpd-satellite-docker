@@ -9,5 +9,5 @@ services:
       - "8800:8800"
     volumes:
       - .data/music:/music
-      - ./data/playlists:/var/lib/mpd/playlists
+      - ./data/mpd:/var/lib/mpd
     restart: unless-stopped

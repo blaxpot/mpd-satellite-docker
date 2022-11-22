@@ -4,18 +4,17 @@ RUN set -ex && \
     apk add --no-cache libcap mpd mpc && \
     setcap -r /usr/bin/mpd && \
     apk del libcap && \
-    mkdir -p /var/lib/mpd/playlists && \
     mkdir -p /music && \
-    touch /var/lib/mpd/database \
-        /var/lib/mpd/mpd.pid \
-        /var/lib/mpd/state \
-        /var/lib/mpd/sticker.sql
+    adduser -S -u 1024 -G audio -s /bin/sh admin && \
+    chown admin:audio /music
 
 COPY mpd.conf /etc/mpd.conf
+
+COPY mpd.sh /mpd.sh
 
 VOLUME /var/lib/mpd
 
 EXPOSE 6600 8000
 
-CMD ["mpd", "--stdout", "--no-daemon"]
+CMD ["sh", "mpd.sh", "mpd", "--stdout", "--no-daemon"]
 

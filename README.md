@@ -28,7 +28,7 @@ services:
       - "8800:8800"
     volumes:
       - <your music>:/music
-      - <your playlists>:/var/lib/mpd/playlists
+      - <your mpd dir>:/var/lib/mpd
     restart: unless-stopped
 ```
 e.g.:
@@ -43,8 +43,8 @@ docker run -d \
 --name mpd \
 -p 6600:6600 \
 -p 8000:8000 \
--v /your/music:/music \
--v /your/playlists:/var/lib/mpd/playlists \
+-v <your music>:/music \
+-v <your mpd dir>:/var/lib/mpd \
 blaxpot/mpd
 ```
 
