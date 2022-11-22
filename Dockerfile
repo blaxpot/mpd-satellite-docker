@@ -1,7 +1,5 @@
 FROM alpine:3.16
 
-ARG VERSION
-
 RUN set -ex && \
     apk add --no-cache libcap mpd mpc && \
     setcap -r /usr/bin/mpd && \
