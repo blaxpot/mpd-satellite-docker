@@ -8,6 +8,7 @@ services:
       - "6600:6600"
       - "8800:8800"
     volumes:
-      - .data/music:/music
+      - ./data/music:/music
       - ./data/mpd:/var/lib/mpd
     restart: unless-stopped
+    command: "100"

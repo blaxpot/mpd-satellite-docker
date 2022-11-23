@@ -30,6 +30,7 @@ services:
       - <your music>:/music
       - <your mpd dir>:/var/lib/mpd
     restart: unless-stopped
+    command: "100"  # This arg specifies the UID that will be given to the MPD user. Set to the owner of /music.
 ```
 e.g.:
 ```
@@ -45,6 +46,6 @@ docker run -d \
 -p 8000:8000 \
 -v <your music>:/music \
 -v <your mpd dir>:/var/lib/mpd \
-blaxpot/mpd
+blaxpot/mpd 100 # Last arg specifies the UID that will be given to the MPD user. Set to the owner of /music.
 ```
 
