@@ -1,10 +1,9 @@
-# mpd-docker
-MPD intended to run on my music fileserver so I can stream from it.
+# mpd-satellite-docker
+MPD intended to run on a music fileserver for other instances of MPD running on client devices to stream from. This is known as the ["satellite setup"](https://wiki.archlinux.org/title/Music_Player_Daemon/Tips_and_tricks#Music_streaming_with_the_satellite_setup).
 
-I also have a webserver serving up my music library, which works together with this MPD instance.
+It works in conjuction with a webserver, which handles actually serving the files. [nginx's autoindex](https://nginx.org/en/docs/http/ngx_http_autoindex_module.html) is a good option for this.
 
-On my client machines I have another instance of MPD, using the proxy database plugin to find stuff on the webserver.
-The clients can then stream the files over HTTP/S. The client machine MPD configuration looks like this:
+Client machine instances of MPD connect to this instance of MPD using the proxy database plugin so they can find stuff on the webserver. The clients can then stream the files over HTTP/S. The client machine MPD configuration looks like this:
 ```
 music_directory "http://<server address>:<webserver port>/"
 
